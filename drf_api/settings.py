@@ -38,6 +38,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CSRF_TRUSTED_ORIGINS = ['https://8000-stephaniecr-vellmagazin-93yzfdrh33k.ws-eu92.gitpod.io']
 
 # Application definition
 
@@ -50,6 +51,9 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'rest_framework',
+
+    'profiles',
 ]
 
 MIDDLEWARE = [
