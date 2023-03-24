@@ -1,35 +1,61 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+VELL MAGAZINE - BACKEND API
+==================================
 
-Welcome,
+* * *
 
-This is the Code Institute student template for Codeanywhere. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+ABOUT THE API:
+------------------
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **March 3rd, 2023**
+* * * 
 
-## Codeanywhere Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+[DEPLOYED API HEROKU LINK]()
 
-`python3 -m http.server`
+[DEPLOYED FRONTEND HEROKU LINK - LIVE SITE]()
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+[DEPLOYED BACKEND GITHUB REPOSITORY]()
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+This is the Back End API for _Vell Magazine_, created using Django REST Framework. This back end, will return only JSON data.
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+<img src="src/assets/home.png" width="500px">
 
-To log into the Heroku toolbelt CLI:
+So what do we need from our API?
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+From within the React app, we make HTTP requests to our drf api (which substituted the django context object with JSON responses).
+JSON data, which React uses to then render the UI.
+CRUD functionality! Create, Retrieve, Update or Delete things like a profile, a class, a booking, etc. This is through the HTTP requests.
+Receive responses such as 2xx OK, 4xx ERROR, 5xx SERVER ERROR.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+<img src="assets/crudtable.png" width="500px">
 
----
 
-Happy coding!
+* * *
+
+## DJANGO REST FRAMEWORK
+
+* * *
+
+I decided to use Django REST Framework as I can easily make use of its serializers, APIVIew & generics, permissions and authentications. It can serve both mobile and web apps.
+
+
+Login and Log out views of our API in-browser interface. These come with our REST Framework.
+
+
+* * * 
+
+# PROFILE APP:
+
+* * *
+
+What functionality to we want?
+* Authors have their own profile
+* Authors can publish their own articles.
+* List all articles for all users to view.
+* List all authors for every user to view?
+
+
+
+* * *
+
+
