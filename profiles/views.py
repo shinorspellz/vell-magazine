@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Profile
 from .serializers import ProfileSerializer
+from drf_api.permissions import IsOwnerOrReadOnly
 
 class ProfileList(APIView):
 ## Get method: fetch's all profile objects, serializes and returns in Response.
@@ -16,15 +17,17 @@ class ProfileDetail(APIView):
     """
     Retrieve or update a profile if you're the owner.
     """
+    serializer_class = ProfileSerializer
+    permission_classes = [IsOwnerOrReadOnly]
     def get_object(self, pk):
         try:
             profile = Profile.objects.get(pk=pk)
+            self.check_object_permissions(self.request, profile)
             return profile
         except Profile.DoesNotExist:
             raise Http404
 
 ## Get method fetching profile detail using pk.
-    serializer_class = ProfileSerializer
     def get(self, request, pk):
         profile = self.get_object(pk)
         serializer = ProfileSerializer(profile)

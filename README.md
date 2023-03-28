@@ -50,12 +50,62 @@ Login and Log out views of our API in-browser interface. These come with our RES
 
 What functionality to we want?
 * Authors have their own profile
+* Authors can edit their profile: img, bio, socials.
 * Authors can publish their own articles.
-* List all articles for all users to view.
-* List all authors for every user to view?
-
+* Authors can edit their own profiles
+* Other user can 
 
 
 * * *
 
 
+## MODEL:
+
+We have made use of the standard Django user Model and referenced it in our models.
+
+Profile Model Table:
+
+<img src="assets/table-profiles.png" width="500px">
+
+
+USING DJANGO SIGNALS:
+Every time a profile is created, a User is created. 
+
+* * *
+
+## VIEWS:
+
+* * *
+
+* ProfileList: 
+    * get request listing all profiles.
+
+* ProfileDetail
+    * _get_object_: View handling request made for profile that doesn't exist and checks permissions.
+    * _get method_: View profile details by fetching using pk. Calls the get_object method, calls profile serializer, and returns serializer data.
+    * _put method_: Calls _get_object_ method by pk, calls serializer with profile and update data. If serializer vaid, save profile instance to database and return data in our response. If invalid, return Response with error.(400_BAD_REQUEST)
+
+* * *
+
+## CUSTOM PERMISSIONS:
+
+* * *
+
+* Allow READ-ONLY access to every user
+* Allow update and delete only to owner of resource.
+
+* * *
+
+* * *
+
+# ARTICLE APP:
+
+* * *
+
+What functionality to we want?
+* Authors can publish their own articles.
+* Only article author can edit their articles
+* View articles by specific author
+
+
+* * *
