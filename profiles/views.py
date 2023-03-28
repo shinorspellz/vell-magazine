@@ -1,4 +1,5 @@
 from django.http import Http404
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Profile
@@ -23,8 +24,23 @@ class ProfileDetail(APIView):
             raise Http404
 
 ## Get method fetching profile detail using pk.
-
+    serializer_class = ProfileSerializer
     def get(self, request, pk):
         profile = self.get_object(pk)
         serializer = ProfileSerializer(profile)
         return Response(serializer.data)
+
+## Put Method: Updating data. 
+# Fetches profile, calls serializer and saves if serializer is valid.
+## Else, 400_BAD_REQUEST
+    
+    def put(self, request, pk):
+        profile = self.get_object(pk)
+        serializer = ProfileSerializer(
+            profile,
+            data=request.data
+            )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
