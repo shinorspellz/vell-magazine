@@ -68,6 +68,10 @@ Profile Model Table:
 
 <img src="assets/table-profiles.png" width="500px">
 
+ROLE HIERARCHY:
+- Editor in chief
+- Editor
+- Author
 
 USING DJANGO SIGNALS:
 Every time a profile is created, a User is created. 
