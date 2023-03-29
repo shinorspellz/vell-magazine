@@ -21,6 +21,7 @@ class ProfileDetail(APIView):
     """
     Retrieve or update a profile if you're the owner.
     """
+    # setting serializer class attribute in this view, the rest framework with automatically render the form based on our serializer fields, as opposed to raw Json.
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
     def get_object(self, pk):
@@ -36,6 +37,7 @@ class ProfileDetail(APIView):
         profile = self.get_object(pk)
         serializer = ProfileSerializer(
             profile,
+            # As the logged in user is part of the request object, we need to pass it as context object when we call our serializers in our views.
             context={'request': request}
             )
         return Response(serializer.data)
