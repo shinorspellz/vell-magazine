@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.http import Http404
+from rest_framework import status
+#from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Article
@@ -41,3 +43,19 @@ class ArticleDetail(APIView):
             context={'request': request}
             )
         return Response(serializer.data)
+
+## Put Method: Updating data. 
+# Fetches profile, calls serializer and saves if serializer is valid.
+## Else, 400_BAD_REQUEST
+    
+    def put(self, request, pk):
+        article = self.get_object(pk)
+        serializer = ArticleSerializer(
+            article,
+            data=request.data,
+            context={'request': request}
+            )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
