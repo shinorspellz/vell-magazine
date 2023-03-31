@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Article(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     mainHeader = models.CharField(max_length=255)
     subHeader = models.CharField(max_length=255)
     contentHeader = models.CharField(max_length=255)
@@ -30,4 +30,4 @@ class Article(models.Model):
         ordering = ['created_at']
 
     def __str__(self):
-        return f"{self.author}'s article: {self.mainHeader}"
+        return f"{self.owner}'s article: {self.mainHeader}"

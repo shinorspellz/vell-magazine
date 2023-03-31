@@ -3,18 +3,9 @@ from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
 class Profile(models.Model):
-    """
-    roles = (
-        ('AUTHOR', 'Author'),
-        ('EDITOR', 'Editor'),
-        ('EDITORINCHIEF', 'Editor in Chief'),
-    )
-    """
-
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
-    #role = models.CharField(max_length=30, choices=roles, null=False)
     img = models.ImageField(
         upload_to="images/", default="../profile_avatar_e38sd0"
     )
