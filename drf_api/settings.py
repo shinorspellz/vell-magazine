@@ -55,6 +55,8 @@ INSTALLED_APPS = [
 
     'profiles',
     'roles',
+    'topics',
+    'articles',
 ]
 
 MIDDLEWARE = [

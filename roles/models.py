@@ -12,7 +12,7 @@ class Role(models.Model):
     )
 
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
-    role = models.CharField(max_length=30, choices=roles, null=False)
+    role = models.CharField(max_length=30, choices=roles, null=False, default = "AUTHOR")
     
 
     class Meta:
@@ -26,4 +26,4 @@ def create_role(sender, instance, created, **kwargs):
     if created:
         Role.objects.create(owner=instance)
 
-post_save.connect(create_role, sender=Profile)
+post_save.connect(create_role, sender=User)
