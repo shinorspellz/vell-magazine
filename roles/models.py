@@ -9,6 +9,7 @@ class Role(models.Model):
         ('AUTHOR', 'Author'),
         ('EDITOR', 'Editor'),
         ('EDITORINCHIEF', 'Editor in Chief'),
+        ('SUPERADMIN', 'Super Admin'),
     )
 
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
