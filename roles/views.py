@@ -22,22 +22,9 @@ class RoleDetail(APIView):
 
     # setting serializer class attribute in this view, the rest framework with automatically render the form based on our serializer fields, as opposed to raw Json.
     serializer_class = RoleSerializer
-    permission_classes = [IsAdminOrReadOnly]
-
-    def get_object(self, pk):
-        try:
-            role = Role.objects.get(pk=pk)
-            self.check_object_permissions(self.request, role)
-            return role
-        except Role.DoesNotExist:
-            raise Http404
-
-    ## Put Method: Updating data.
-    # Fetches profile, calls serializer and saves if serializer is valid.
-    ## Else, 400_BAD_REQUEST
-
+    permission_classes = [IsAdminOrReadOnly] 
     def put(self, request, pk):
-        role = self.get_object(pk)
+        role = Role.objects.get(pk=pk)
         serializer = RoleSerializer(
             role, data=request.data, context={"request": request}
         )
@@ -45,6 +32,7 @@ class RoleDetail(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class RoleUserDetail(APIView):
     """

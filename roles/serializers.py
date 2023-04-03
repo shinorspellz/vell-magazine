@@ -7,14 +7,14 @@ class RoleSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
-        request = self.context['request']
+        request = self.context["request"]
         return request.user == obj.owner
 
     class Meta:
         model = Role
         fields = [
-            'id',
-            'owner',
-            'role',
-            'is_owner',
-            ]
+            "id",
+            "owner",
+            "role",
+            "is_owner",
+        ]
