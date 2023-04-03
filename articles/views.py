@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Article
 from .serializers import ArticleSerializer
-from drf_api.permissions import IsOwnerOrReadOnly, IsEditorInChiefOrReadOnly
+from drf_api.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly
 
 
 class ArticleList(APIView):
@@ -25,7 +25,8 @@ class ArticleDetail(APIView):
     """
     # setting serializer class attribute in this view, the rest framework with automatically render the form based on our serializer fields, as opposed to raw Json.
     serializer_class = ArticleSerializer
-    permission_classes = [IsOwnerOrReadOnly, IsEditorInChiefOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly, IsAdminOrReadOnly]
+
     def get_object(self, pk):
         try:
             article = Article.objects.get(pk=pk)
@@ -33,10 +34,6 @@ class ArticleDetail(APIView):
             return article
         except Article.DoesNotExist:
             raise Http404
-
-## Put Method: Updating data. 
-# Fetches profile, calls serializer and saves if serializer is valid.
-## Else, 400_BAD_REQUEST
     
     def put(self, request, pk):
         article = self.get_object(pk)
@@ -56,7 +53,8 @@ class ArticleGetDetail(APIView):
     """
     # setting serializer class attribute in this view, the rest framework with automatically render the form based on our serializer fields, as opposed to raw Json.
     serializer_class = ArticleSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly, IsAdminOrReadOnly]
+    
     def get_object(self, pk):
         try:
             article = Article.objects.get(pk=pk)

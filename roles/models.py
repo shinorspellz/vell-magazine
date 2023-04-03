@@ -18,8 +18,8 @@ class Role(models.Model):
     class Meta:
         ordering = ["role"]
 
-    # def __str__(self):
-    #     return f"{self.owner} has {self.role} permissions"
+    def __str__(self):
+        return f"{self.owner} has {self.role} permissions"
 
 
 def create_role(sender, instance, created, **kwargs):
