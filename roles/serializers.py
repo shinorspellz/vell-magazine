@@ -14,7 +14,6 @@ class RoleSerializer(serializers.ModelSerializer):
         model = Role
         fields = [
             "id",
-            "owner",
             "role",
             "is_owner",
         ]
