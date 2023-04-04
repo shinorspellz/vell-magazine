@@ -4,12 +4,20 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
+    #timestamps
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
+    # cloudinary host
     img = models.ImageField(
         upload_to="images/", default="../profile_avatar_e38sd0"
     )
+    #socials
     bio = models.TextField(blank=True)
+    linkedin = models.URLField(max_length=200, null= True, blank= True)
+    twitter = models.URLField(max_length=200, null= True, blank= True)
+    instagram = models.URLField(max_length=200, null= True, blank= True)
+    facebook = models.URLField(max_length=200, null= True, blank= True)
+    email = models.EmailField(null= True, blank= True)
 
     class Meta:
         ordering = ['owner']
