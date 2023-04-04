@@ -1,10 +1,12 @@
 from rest_framework import permissions
 
+
 class IsOwnerOrReadOnly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
             return True
         return obj.owner == request.user
+
 
 class IsAdminOrReadOnly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
@@ -13,6 +15,7 @@ class IsAdminOrReadOnly(permissions.BasePermission):
             request.method in permissions.SAFE_METHODS
             and request.user.role.role == "SUPERADMIN"
         ):
+<<<<<<< HEAD
             return True
         return request.user.role == "SUPERADMIN"
 """
@@ -33,3 +36,7 @@ class IsEditorOrReadOnly(permissions.BasePermission):
             return True
         return request.user.role == 'EDITOR'
 """
+=======
+            return True
+        return request.user.role == "SUPERADMIN"
+>>>>>>> 5f668f651ff54ac0e34ae487d5b780b70f7ee1c8

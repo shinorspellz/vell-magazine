@@ -23,9 +23,12 @@ class RoleDetail(APIView):
     # setting serializer class attribute in this view, the rest framework with automatically render the form based on our serializer fields, as opposed to raw Json.
     serializer_class = RoleSerializer
     permission_classes = [IsAdminOrReadOnly] 
+<<<<<<< HEAD
 
 
     
+=======
+>>>>>>> 5f668f651ff54ac0e34ae487d5b780b70f7ee1c8
     def put(self, request, pk):
         role = Role.objects.get(pk=pk)
         serializer = RoleSerializer(
@@ -62,4 +65,8 @@ class RoleUserDetail(APIView):
             # As the logged in user is part of the request object, we need to pass it as context object when we call our serializers in our views.
             context={"request": request},
         )
+<<<<<<< HEAD
         return Response(serializer.data)
+=======
+        return Response(serializer.data)
+>>>>>>> 5f668f651ff54ac0e34ae487d5b780b70f7ee1c8
