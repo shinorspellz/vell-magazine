@@ -15,28 +15,5 @@ class IsAdminOrReadOnly(permissions.BasePermission):
             request.method in permissions.SAFE_METHODS
             and request.user.role.role == "SUPERADMIN"
         ):
-<<<<<<< HEAD
             return True
         return request.user.role == "SUPERADMIN"
-"""
-class IsEditorInChiefOrReadOnly(permissions.BasePermission):
-    def has_object_permission(self, request, view, obj):
-        print(request.user.role.role)
-        if (
-            request.method in permissions.SAFE_METHODS
-            and request.user.role.role == "EDITORINCHIEF"
-        ):
-            return True
-        return request.user.role == "EDITORINCHIEF"
-
-
-class IsEditorOrReadOnly(permissions.BasePermission):
-    def has_object_permission(self, request, view, obj):
-        if request.method in permissions.SAFE_METHODS:
-            return True
-        return request.user.role == 'EDITOR'
-"""
-=======
-            return True
-        return request.user.role == "SUPERADMIN"
->>>>>>> 5f668f651ff54ac0e34ae487d5b780b70f7ee1c8
