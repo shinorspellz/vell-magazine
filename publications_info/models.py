@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from articles.models import Article
 
 class PublicationsInfo(models.Model):
-    owner = models.OneToOneField(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     article = models.ForeignKey(Article, on_delete= models.CASCADE)
     status = models.CharField(max_length=255)
     month = models.CharField(max_length=255)
