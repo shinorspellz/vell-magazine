@@ -1,2 +1,2 @@
 python manage.py migrate
-web: gunicorn wsgi
+web: gunicorn drf_api.wsgi
