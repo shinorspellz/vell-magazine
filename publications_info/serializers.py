@@ -4,7 +4,6 @@ from publications_info.models import PublicationsInfo
 
 class PublicationsInfoSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
-    is_owner = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         request = self.context["request"]
@@ -15,7 +14,7 @@ class PublicationsInfoSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "owner",
-            'is_owner',
+            'article',
             "status",
             "month",
             "date",
